@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic::setContent(~{this::content},~{this::title})}">
+  <title th:fragment="title">아이디찾기</title>
+
+  <th:block th:fragment="content">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+
+<body>
+
+<div class="container">
+  <h1>아이디 찾기</h1>
+  <form th:action="@{/festival/findId}" method="post">
+  <form id="findIdForm" action="/findId" method="POST">
+    <label for="email">이메일 주소:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">찾기</button>
+  </form>
+  <div id="message">${message}</div>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+<!-- 아이디 찾기 폼
+<h2>Find ID</h2>
+<form id="findIdForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required><br>
+
+  <button type="button" id="findIdBtn">Find ID</button>
+</form> -->
+
+</body>

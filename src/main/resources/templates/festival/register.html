@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic::setContent(~{this::content},~{this::title})}">
+
+    <title th:fragment="title">회원가입</title>
+    <th:block th:fragment="content">
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+        .register-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            padding: 30px;
+            display: flex;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            background-color: #f8f9fa;
+        }
+
+        .register-form {
+          display: flex;
+          flex-direction: column;
+        }
+        label {
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+        .register-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px
+        }
+        .register-button {
+            padding: 10px;
+            color: #f8f9fa;
+            background-color: #fd999e;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            justify-content: center;
+            font-size: 14px;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .login-button:disabled {
+            background-color: #fd999e;
+            cursor: not-allowed;
+        }
+        .login-button:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+
+    <div th:class="register-container">
+        <h1>회원가입</h1>
+        <div class="register-input">
+
+
+        <form th:action="@{/festival/register}" th:method="post" th:object="${member}">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" th:value="${member.email}" placeholder="이메일" required readonly/>
+
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름" required />
+
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호" required />
+        </div>
+<!--            <label for="provider"></label>-->
+<!--            <input type="hidden" id="provider" name="provider" placeholder="비밀번호" required />-->
+
+            <!--          <label for="loginId">로그인 아이디</label>-->
+            <!--          <input type="text" id="loginId" name="loginId" placeholder="아이디" required />-->
+            <!--&lt;!&ndash;          <button type="button" id="idCheckBtn" class="btn btn-outline-info">ID 중복 확인</button>&ndash;&gt;-->
+
+<!--          <label for="birthDate">생년월일</label>-->
+<!--          <input type="date" id="birthDate" name="birthDate" required />-->
+
+
+<!--          <label for="phoneNumber">휴대폰 번호</label>-->
+<!--          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="휴대폰번호" required />-->
+
+
+                <div class="register-button"> <!--회원가입완료 home으로-->
+                    <a th:href="@{/festival/home}" th:action ongotpointercapture="this">회원가입</a>
+                </div>
+       <!--          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+        </form>
+    </div>
+
+        <script>
+            // $(document).ready(function () {
+            // let isIdChecked = false; // 중복 확인 여부 플래그
+            //
+            // // ID 중복 확인 버튼 클릭 이벤트
+            // $('#idCheckBtn').click(function () {
+            // const loginId = $('#loginId').val();
+            //
+            // if (loginId === '') {
+            // alert('아이디를 입력하세요.');
+            // return;
+            // }
+
+            // // Ajax 요청을 통해 중복 확인
+            // $.ajax({
+            // type: 'POST',
+            // url: /*[[@{/festival/idCheck}]]*/, // Thymeleaf URL 표현식
+            // contentType: 'application/json',
+            // data: JSON.stringify({ loginId: loginId }),
+            // success: function (response) {
+            // if (response.available) {
+            // alert('사용 가능한 아이디입니다.');
+            // isIdChecked = true;
+            //
+            // $('#loginId').prop('readonly', true); // 입력 비활성화
+            // $('#idCheckBtn').text('변경');
+            // } else {
+            // alert('이미 사용 중인 아이디입니다.');
+            // $('#loginId').focus();
+            // isIdChecked = false;
+            // }
+            // },
+            // error: function () {
+            // alert('아이디 중복 확인에 실패했습니다. 다시 시도해주세요.');
+            // }
+            // });
+            // });
+            //
+            // // 회원가입 버튼 클릭 이벤트
+            // $('#registerBtn').click(function (event) {
+            // if (!isIdChecked) {
+            // alert('아이디 중복 확인을 완료해주세요.');
+            // event.preventDefault(); // 폼 제출 방지
+            // }
+            // });
+            // });
+
+        </script>
+
+    </th:block>
+</th:block>

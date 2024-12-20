@@ -1,0 +1,92 @@
+/* 기본 */
+body {
+   justify-content: center;/*수평중앙정렬*/
+   display: flex;/*지정한 자리 고정*/
+   align-items: center;/*수직중앙정렬*/
+   font-family: Arial, sans-serif;/*폰트*/
+   margin: 0;/*외부여백 상하,좌우*/
+   padding: 0;/*내부여백 상하,좌우*/
+   height: 100vh;/*전체화면높이*/
+   background-color: #ffffff;
+   }
+
+/* 컨테이너박스 테두리스타일 */
+.container {
+   background-color: #fff;
+   padding: 30px;
+   border-radius: 8px;
+   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+   text-align: center;
+   width: 100%;
+   max-width: 400px;
+   }
+
+/* 로고스타일-앞에 점이 있어야됨*/
+.logo img{
+   margin: 20px;/*로고여백0*/
+   width: 120px;
+   justify-content: center;
+
+}
+/* 체크박스-앞에 점이 있어야됨*/
+.checkbox-container {
+   display: flex;
+   align-items: center;/*왼쪽에 맞춤*/
+   justify-content: start;
+   border-radius: 8px;
+   margin: 0px 30px;
+   font-size: 13px;
+}
+/* 입력창-앞에 점이 있어야됨*/
+.input-field{
+   width: 80%;
+   padding: 10px 10px;
+   margin: 5px 0;
+   align-items: center;
+   border: 1px solid #fd999e;
+   border-radius: 50px;
+}
+.button-style {
+   width: 85%;
+   padding: 8px 8px;
+   margin: 10px;
+   background-color: #fd999e;
+   color: #fff;
+   border: none;
+   border-radius: 50px;
+   font-size: 18px;
+   cursor: pointer;
+}
+
+.button:disabled {
+   background-color: #fd999e;
+   cursor: not-allowed;
+}
+
+
+.font-controler{
+   margin: 20px;
+   font-family: Arial, serif;
+   font-size: 10px;
+   color: #333333;
+}
+.social-buttons {
+    display: flex;/*플렉스 컨테이너로*/
+    justify-content: center; /*균등간 간격:space-around*/
+    gap : 20px;/*아이콘간격*/
+    margin-top: 20px;/*상단여백*/
+}
+.social-button {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.social-button img {
+    width: 50px;
+}
+
+
+
+

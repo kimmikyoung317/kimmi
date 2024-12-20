@@ -1,0 +1,168 @@
+html, body { /* 화면 전체 채우기 */
+    font-family: 'Arial', sans-serif; /* 폰트 */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* 스크롤 숨김 */
+}
+#container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+#map {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#board {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 380px;
+    height: 100%;
+    background-color: rgba(244, 244, 244, 0.7); /* 반투명 배경 */
+    z-index: 2; /* 축제 리스트가 지도 위에 뜨도록 */
+    padding-top: 20px;
+    overflow-y: auto; /* 스크롤 가능 */
+}
+#search {
+    margin: 15px 15px 5px 15px;
+}
+#festivalList {
+    overflow-y: auto; /* 스크롤 가능 */
+    margin: 0 15px 15px 15px;
+    max-height: calc(100% - 300px);
+}
+#festivalList small {
+    display: -webkit-box; /* 여러 줄을 지원 */
+    -webkit-box-orient: vertical; /* 세로 방향으로 정렬 */
+    -webkit-line-clamp: 2; /* 최대 2줄 */
+    overflow: hidden; /* 넘치는 텍스트 숨기기 */
+    text-overflow: ellipsis; /* 넘치는 텍스트를 ...으로 표시 */
+}
+#popularFestivalsList {
+    margin: 0 15px 0 15px;
+}
+#popularFestivalsList h6 {
+    font-weight: bold;
+    margin-left: 15px;
+}
+#popularFestivals {
+    cursor: pointer; /* 마우스 커서가 포인터로 변화 */
+}
+#viewMapBtn {
+    position: absolute;
+    top: 10px;
+    right:10px;
+    z-index: 9999;
+    padding: 10px 20px;
+    cursor: pointer; /* 마우스 커서가 포인터로 변화 */
+    border: 1px solid #919191;
+    border-radius: 5px;
+}
+#viewFestivalBtn {
+    position: absolute;
+    top: 65px;
+    right:10px;
+    z-index: 9998;
+    padding: 10px 20px;
+    cursor: pointer; /* 마우스 커서가 포인터로 변화 */
+    border: 1px solid #919191;
+    border-radius: 5px;
+}
+#searchBtn {
+    background-color: #007bff;
+    color: white;
+    border-radius: 0 5px 5px 0;
+}
+#searchInput {
+    border-radius: 5px 0 0 5px;
+}
+@media (max-height: 800px) {
+    #festivalList {
+        max-height: 250px;
+    }
+}
+/* 인포윈도우 */
+.wrap {
+    border: 1px solid #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    overflow: auto; /* 스크롤 가능 */
+    width: 275px;
+    background-color: #fff;
+}
+
+.info .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 0px 0px 10px;
+    display: flex;
+    justify-content: space-between; /* 간격 고르게 */
+    align-items: center; /* 수직 정렬 */
+}
+.info .title {
+    cursor: pointer; /* 클릭 시 포인터로 표시 */
+}
+.info .title a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: black;
+}
+.info .title a:hover {
+    color: #007bff;
+}
+
+.info .body {
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+}
+
+.info .img img {
+    border-radius: 6px;
+    object-fit: cover; /* 이미지가 크기에 맞춰서 설정 */
+    width: 70px;
+    height: 70px;
+}
+
+.info .desc {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    gap: 5px;
+}
+.info .desc .location, .date ,.contact {
+    color: #555;
+}
+/* 확대, 축소 버튼 */
+.radius_border {
+    border: 1px solid #919191;
+    border-radius: 5px;
+}
+.custom_zoomcontrol {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 36px;
+    height: 80px;
+    overflow: hidden; /* 스크롤바 표시 X */
+    z-index: 999;
+    background-color: #f5f5f5;
+}
+.custom_zoomcontrol span {
+    display: block;
+    width: 36px;
+    height: 40px;
+    text-align: center; /* 중앙 정렬 */
+    cursor: pointer;
+}
+.custom_zoomcontrol span img {
+    width: 20px;
+    height: 20px;
+    border: none;
+    margin-top: 10px;
+}
+.custom_zoomcontrol span:first-child{
+    border-bottom: 1px solid #bfbfbf;
+}

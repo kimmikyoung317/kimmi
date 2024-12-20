@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic::setContent(~{this::content},~{this::title})}"><!--네비개이션-->
+    <th:block th:fragment="content"> <!--연결-->
+        <title th:fragment="title">로그인</title>
+
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f8f9fa;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+            }
+            .login-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 400px;
+                padding: 30px;
+                display: flex;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                justify-content: center;
+                background-color: #f8f9fa;
+            }
+
+            .mb-3 {/*input*/
+                width: 100%;
+                padding: 10px;
+                border-radius: 4px;
+
+                .form-control{
+                    margin-top: 10px;
+                    text-align: start;
+                    font-size: 13px;
+                }
+
+            }
+            .login-button {
+                padding: 10px;
+                color: #f8f9fa;
+                background-color: #fd999e;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                justify-content: center;
+                font-size: 14px;
+                width: 100%;
+                transition: transform 0.2s, box-shadow 0.2s;
+                margin-bottom: 10px;
+            }
+            .login-button:disabled {
+                background-color: #fd999e;
+                cursor: not-allowed;
+            }
+            .login-button:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .checkbox-container {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                font-size: 13px;
+                color: #444444;
+            }
+            .checkbox-container input {
+                margin: 10px 5px ;
+            }
+            .link-container {
+                color: #fd999e;
+                margin-top: 15px;
+                font-size: 14px;
+
+            }
+
+            .social-buttons-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px; /* 아이콘 간 간격 */
+                margin-top: 20px;
+            }
+
+            .social-button {
+                width: 50px; /* 버튼 크기 */
+                height: 50px;
+                border-radius: 50%; /* 원형 버튼 */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+                text-decoration: none;
+                margin-bottom: 20px;
+            }
+
+            .social-button:hover {
+                transform: scale(1.1); /* 확대 효과 */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            /* 소셜별 배경색 지정 */
+            .social-button.google {
+                background-color: #db4437; /* Google 빨강 */
+                background-image: url("img/googleicon.jpg");
+            }
+
+            .social-button.kakao {
+                background-color: #fee500; /* Kakao 노랑 */
+                background-image: url("/templates/festival/img/kakakoicon.jpg");
+            }
+
+            .social-button.naver {
+                background-color: #03c75a; /* Naver 초록 */
+            }
+
+        </style>
+
+        <body>
+        <div class="login-container">
+
+            <form th:action="@{/festival/login}" th:method="post" class="loginForm">
+
+                <div class="mb-3">
+                    <input type="email" id="email" name="username" class="form-control" th:value="${loginDTO.email}" placeholder="로그인 아이디" autocomplete="username">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호" autocomplete="current-password">
+                </div>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" id="remember-id">
+                    <label for="remember-id">아이디 저장</label>
+                </div>
+
+                <button th:type="submit" class="login-button">로그인</button>
+
+                <div class="row">
+
+                    <div class="social-buttons-container">
+
+                        <a th:href="@{/oauth2/authorization/kakao}" class="social-button kakao">
+                            <img th:src="@{/templates/festival/kakaoicon.jpg}" alt="Kakao 로그인 버튼"></a>
+
+
+                        <a th:href="@{/oauth2/authorization/naver}" class="social-button naver">
+                            <img th:src="@{/templates/festival/img/navericon.jpg}" alt="Naver 로그인 버튼"></a>
+
+                        <a th:href="@{/oauth2/authorization/google}" class="social-button google">
+                            <img th:src="@{/templates/festival/img/googleicon.jpg}" alt="Google 로그인 버튼"></a>
+
+                    </div>
+
+
+
+
+
+                    <div align="center">
+                        <a  class="link-container" href="findId.html">아이디찾기</a> | <a  class="link-container" href="@{/festival/findPwd}">비밀번호찾기</a> |  <a  class="link-container" th:href="@{/festival/step1}">회원가입</a>
+                        <a  class="link-container" th:href="@{/festival/findId}">아이디찾기</a>
+
+                    </div>
+
+            </form>
+
+            <div th:if="${error}" class="alert alert-warning mt-3">
+                <strong th:text="${loginDTO.errorMessage}">Warning!</strong>
+            </div>
+
+
+
+
+        </div>
+
+        </body>
+
+    </th:block>
+</th:block>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드</title>
+    <style>
+        body {
+            background-image: url("17.png");
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* 상단 메뉴바 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7); /* 투명도 */
+            padding: 20px 40px;
+            z-index: 1000;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar:hover {
+            background-color: rgba(255, 255, 255, 1); /* 호버 시 불투명 */
+        }
+
+        /* 슬라이더 컨테이너 */
+        .slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 600px;
+
+        }
+
+        .slide {
+            display: flex;
+            width: 300%; /* 슬라이드 전체 너비 */
+            animation: slide 30s infinite linear;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0%);
+            }
+            33% {
+                transform: translateX(-100%);
+            }
+            66% {
+                transform: translateX(-200%);
+            }
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        /* 컨텐츠 섹션 */
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 00px;
+            padding: 100px;/*위 슬라이드 이미지와 간격*/
+            overflow: hidden;
+        }
+
+        .content img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .content img:hover {
+            transform: scale(1.05);
+        }
+
+        .arrow {
+            font-size: 2em;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .arrow:hover {
+            color: gray;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- 상단 네비게이션 -->
+<div class="navbar">
+
+    로그인 | 회원가입 | 마이페이지 | 로그아웃
+
+<!-- 슬라이드 -->
+<div class="slider">
+    <div class="slide">
+        <img src="11.png" alt="Slide 1" onclick="goToDetail('detail1.html')">
+        <img src="12.png" alt="Slide 1" onclick="goToDetail('detail1.html')">
+        <img src="13.png" alt="Slide 1" onclick="goToDetail('detail1.html')">
+        <img src="14.png" alt="Slide 1" onclick="goToDetail('detail1.html')">
+        <img src="15.png" alt="Slide 1" onclick="goToDetail('detail1.html')">
+        <img src="16.png" alt="Slide 1" onclick="goToDetail('detail1.html')">
+        <img src="17.png" alt="Slide 1" onclick="goToDetail('detail1.html')">
+    </div>
+</div>
+
+<!-- 콘텐츠 영역 -->
+<div class="content">
+    <span class="arrow" onclick="moveLeft()">&#8249;</span>
+    <img src="1.png" alt="Image 1" onclick="goToDetail('detail1.html')">
+    <img src="2.png" alt="Image 1" onclick="goToDetail('detail1.html')">
+    <img src="3.png" alt="Image 1" onclick="goToDetail('detail1.html')">
+    <span class="arrow" onclick="moveRight()">&#8250;</span>
+</div>
+
+<script>
+    // 콘텐츠 좌우 이동
+    const content = document.querySelector('.content');
+    let scrollAmount = 0;
+
+    function moveLeft() {
+        content.scrollBy({
+            left: -300,
+            behavior: 'smooth'
+        });
+    }
+
+    function moveRight() {
+        content.scrollBy({
+            left: 300,
+            behavior: 'smooth'
+        });
+    }
+
+    // 상세페이지 이동
+    function goToDetail(url) {
+        window.location.href = url;
+    }
+</script>
+
+</body>
+</html>

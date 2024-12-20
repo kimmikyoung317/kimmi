@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic::setContent(~{this::content},~{this::title})}">
+  <link rel="stylesheet" href="form.css">
+  <meta charset="UTF-8">
+  <meta name="login" content="width=device-width, initial-scale=1.0">
+  <title>아이디찾기</title>
+
+  <body>
+  <div class="container">
+
+    <div class="logo img">
+      <img src="teamlogo.png" a="팀로고">
+    </div>
+
+
+    <div class="font-control">
+      FindID
+    </div>
+
+
+    <form id = "findIdForm">
+      <input type="name" placeholder="이름" class="input-field" required/>
+      <input type="email" placeholder="이메일" class="input-field" required/>
+    </form>
+
+    <form >
+      <button class="button-style" id = register>FINDNOW</button>
+    </form>
+
+    <div class="font-controler">
+      <a href="findId.html">FindID</a> | <a href="findPwd.html">FindPW</a>
+    </div>
+
+  </div>
+  </body>
+</th:block>
